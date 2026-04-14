@@ -66,17 +66,17 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
      */
     public fun eventHandler(
       name: String,
-      key: String = name,
       remember: Boolean? = null,
+      key: String = name,
       update: Updater<PropsT, *, OutputT>.() -> Unit
-    ): () -> Unit = eventHandler0(name, key, remember ?: stableEventHandlers, update)
+    ): () -> Unit = eventHandler0(name, remember ?: stableEventHandlers, key, update)
 
     public inline fun <reified EventT> eventHandler(
       name: String,
-      key: String = name,
       remember: Boolean? = null,
+      key: String = name,
       noinline update: Updater<PropsT, *, OutputT>.(EventT) -> Unit
-    ): (EventT) -> Unit = eventHandler1(name, key, remember ?: stableEventHandlers, update)
+    ): (EventT) -> Unit = eventHandler1(name, remember ?: stableEventHandlers, key, update)
 
     public inline fun <reified E1, reified E2> eventHandler(
       name: String,

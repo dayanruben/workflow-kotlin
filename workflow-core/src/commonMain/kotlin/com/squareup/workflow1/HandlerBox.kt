@@ -9,8 +9,8 @@ internal class HandlerBox0 {
 
 internal fun <P, S, O> BaseRenderContext<P, S, O>.eventHandler0(
   name: String,
-  key: String,
   remember: Boolean,
+  key: String,
   update: Updater<P, S, O>.() -> Unit
 ): () -> Unit {
   val handler = { actionSink.send(action(name, update)) }
@@ -32,8 +32,8 @@ internal class HandlerBox1<E> {
 @PublishedApi
 internal inline fun <P, S, O, reified EventT> BaseRenderContext<P, S, O>.eventHandler1(
   name: String,
-  key: String,
   remember: Boolean,
+  key: String,
   noinline update: Updater<P, S, O>.(EventT) -> Unit
 ): (EventT) -> Unit {
   val handler = { e: EventT -> actionSink.send(action(name) { update(e) }) }
