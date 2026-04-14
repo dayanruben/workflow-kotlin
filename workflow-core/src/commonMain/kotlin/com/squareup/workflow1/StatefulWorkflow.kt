@@ -388,7 +388,7 @@ public abstract class StatefulWorkflow<
         OutputT
         >.Updater.(currentState: CurrentStateT) -> Unit
     ): () -> Unit =
-      eventHandler(name, remember) {
+      eventHandler(name, remember = remember) {
         CurrentStateT::class.safeCast(state)?.let { currentState -> this.update(currentState) }
           ?: onFailedCast(name, CurrentStateT::class, state)
       }
@@ -407,7 +407,7 @@ public abstract class StatefulWorkflow<
         event: EventT
       ) -> Unit
     ): (EventT) -> Unit =
-      eventHandler(name, remember) { event ->
+      eventHandler(name, remember = remember) { event ->
         CurrentStateT::class.safeCast(state)
           ?.let { currentState -> this.update(currentState, event) }
           ?: onFailedCast(name, CurrentStateT::class, state)
@@ -432,7 +432,7 @@ public abstract class StatefulWorkflow<
         e2: E2
       ) -> Unit
     ): (E1, E2) -> Unit =
-      eventHandler(name, remember) { e1, e2 ->
+      eventHandler(name, remember = remember) { e1, e2 ->
         CurrentStateT::class.safeCast(state)
           ?.let { currentState -> this.update(currentState, e1, e2) }
           ?: onFailedCast(name, CurrentStateT::class, state)
@@ -459,7 +459,7 @@ public abstract class StatefulWorkflow<
         e3: E3
       ) -> Unit
     ): (E1, E2, E3) -> Unit =
-      eventHandler(name, remember) { e1, e2, e3 ->
+      eventHandler(name, remember = remember) { e1, e2, e3 ->
         CurrentStateT::class.safeCast(state)
           ?.let { currentState -> this.update(currentState, e1, e2, e3) }
           ?: onFailedCast(name, CurrentStateT::class, state)
@@ -488,7 +488,7 @@ public abstract class StatefulWorkflow<
         e4: E4
       ) -> Unit
     ): (E1, E2, E3, E4) -> Unit =
-      eventHandler(name, remember) { e1, e2, e3, e4 ->
+      eventHandler(name, remember = remember) { e1, e2, e3, e4 ->
         CurrentStateT::class.safeCast(state)
           ?.let { currentState -> this.update(currentState, e1, e2, e3, e4) }
           ?: onFailedCast(name, CurrentStateT::class, state)
@@ -519,7 +519,7 @@ public abstract class StatefulWorkflow<
         e5: E5
       ) -> Unit
     ): (E1, E2, E3, E4, E5) -> Unit =
-      eventHandler(name, remember) { e1, e2, e3, e4, e5 ->
+      eventHandler(name, remember = remember) { e1, e2, e3, e4, e5 ->
         CurrentStateT::class.safeCast(state)
           ?.let { currentState -> this.update(currentState, e1, e2, e3, e4, e5) }
           ?: onFailedCast(name, CurrentStateT::class, state)
@@ -552,7 +552,7 @@ public abstract class StatefulWorkflow<
         e6: E6
       ) -> Unit
     ): (E1, E2, E3, E4, E5, E6) -> Unit =
-      eventHandler(name, remember) { e1, e2, e3, e4, e5, e6 ->
+      eventHandler(name, remember = remember) { e1, e2, e3, e4, e5, e6 ->
         CurrentStateT::class.safeCast(state)
           ?.let { currentState -> this.update(currentState, e1, e2, e3, e4, e5, e6) }
           ?: onFailedCast(name, CurrentStateT::class, state)
@@ -587,7 +587,7 @@ public abstract class StatefulWorkflow<
         e7: E7
       ) -> Unit
     ): (E1, E2, E3, E4, E5, E6, E7) -> Unit =
-      eventHandler(name, remember) { e1, e2, e3, e4, e5, e6, e7 ->
+      eventHandler(name, remember = remember) { e1, e2, e3, e4, e5, e6, e7 ->
         CurrentStateT::class.safeCast(state)
           ?.let { currentState -> this.update(currentState, e1, e2, e3, e4, e5, e6, e7) }
           ?: onFailedCast(name, CurrentStateT::class, state)
@@ -624,7 +624,7 @@ public abstract class StatefulWorkflow<
         e8: E8
       ) -> Unit
     ): (E1, E2, E3, E4, E5, E6, E7, E8) -> Unit =
-      eventHandler(name, remember) { e1, e2, e3, e4, e5, e6, e7, e8 ->
+      eventHandler(name, remember = remember) { e1, e2, e3, e4, e5, e6, e7, e8 ->
         CurrentStateT::class.safeCast(state)
           ?.let { currentState -> this.update(currentState, e1, e2, e3, e4, e5, e6, e7, e8) }
           ?: onFailedCast(name, CurrentStateT::class, state)
@@ -663,7 +663,7 @@ public abstract class StatefulWorkflow<
         e9: E9
       ) -> Unit
     ): (E1, E2, E3, E4, E5, E6, E7, E8, E9) -> Unit =
-      eventHandler(name, remember) { e1, e2, e3, e4, e5, e6, e7, e8, e9 ->
+      eventHandler(name, remember = remember) { e1, e2, e3, e4, e5, e6, e7, e8, e9 ->
         CurrentStateT::class.safeCast(state)
           ?.let { currentState -> this.update(currentState, e1, e2, e3, e4, e5, e6, e7, e8, e9) }
           ?: onFailedCast(name, CurrentStateT::class, state)
@@ -704,7 +704,7 @@ public abstract class StatefulWorkflow<
         e10: E10
       ) -> Unit
     ): (E1, E2, E3, E4, E5, E6, E7, E8, E9, E10) -> Unit =
-      eventHandler(name, remember) { e1, e2, e3, e4, e5, e6, e7, e8, e9, e10 ->
+      eventHandler(name, remember = remember) { e1, e2, e3, e4, e5, e6, e7, e8, e9, e10 ->
         CurrentStateT::class.safeCast(state)
           ?.let { currentState ->
             this.update(currentState, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10)
