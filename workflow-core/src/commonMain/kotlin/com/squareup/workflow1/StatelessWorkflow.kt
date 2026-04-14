@@ -43,9 +43,12 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
      * as an event handler on a rendered view model.
      * See [StatefulWorkflow.RenderContext.eventHandler] for details.
      *
-     * @param name If [remember] is true, used as a unique key to distinguish
-     * event handlers with same number and type of parameters. Also used
-     * for descriptive logging and error messages.
+     * @param name Used for descriptive logging and error messages.
+     *
+     * @param key If [remember] is true, used as a unique key to distinguish
+     * event handlers with same number and type of parameters. Defaults to [name].
+     * Use a different value when uniqueness requires adding dynamic content (e.g. an id
+     * or uuid) to the key — keeping [name] clean for readability.
      *
      * @param remember When true uses [RenderContext.remember] to ensure
      * that the same lambda is returned across multiple render passes,
@@ -57,21 +60,23 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
      * When `null` a default value of `false` is used unless
      * [STABLE_EVENT_HANDLERS] has been specified in the [runtimeConfig].
      *
-     * @throws IllegalArgumentException if [remember] is true and [name]
+     * @throws IllegalArgumentException if [remember] is true and [key]
      * has already been used in the current [render] call for a lambda of
      * the same shape
      */
     public fun eventHandler(
       name: String,
+      key: String = name,
       remember: Boolean? = null,
       update: Updater<PropsT, *, OutputT>.() -> Unit
-    ): () -> Unit = eventHandler0(name, remember ?: stableEventHandlers, update)
+    ): () -> Unit = eventHandler0(name, key, remember ?: stableEventHandlers, update)
 
     public inline fun <reified EventT> eventHandler(
       name: String,
+      key: String = name,
       remember: Boolean? = null,
       noinline update: Updater<PropsT, *, OutputT>.(EventT) -> Unit
-    ): (EventT) -> Unit = eventHandler1(name, remember ?: stableEventHandlers, update)
+    ): (EventT) -> Unit = eventHandler1(name, key, remember ?: stableEventHandlers, update)
 
     public inline fun <reified E1, reified E2> eventHandler(
       name: String,

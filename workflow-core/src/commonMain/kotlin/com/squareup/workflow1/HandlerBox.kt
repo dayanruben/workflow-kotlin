@@ -9,12 +9,13 @@ internal class HandlerBox0 {
 
 internal fun <P, S, O> BaseRenderContext<P, S, O>.eventHandler0(
   name: String,
+  key: String,
   remember: Boolean,
   update: Updater<P, S, O>.() -> Unit
 ): () -> Unit {
-  val handler = { actionSink.send(action("eH: $name", update)) }
+  val handler = { actionSink.send(action(name, update)) }
   return if (remember) {
-    val box = remember(name) { HandlerBox0() }
+    val box = remember(key) { HandlerBox0() }
     box.handler = handler
     box.stableHandler
   } else {
@@ -31,12 +32,13 @@ internal class HandlerBox1<E> {
 @PublishedApi
 internal inline fun <P, S, O, reified EventT> BaseRenderContext<P, S, O>.eventHandler1(
   name: String,
+  key: String,
   remember: Boolean,
   noinline update: Updater<P, S, O>.(EventT) -> Unit
 ): (EventT) -> Unit {
-  val handler = { e: EventT -> actionSink.send(action("eH: $name") { update(e) }) }
+  val handler = { e: EventT -> actionSink.send(action(name) { update(e) }) }
   return if (remember) {
-    val box = remember(name, typeOf<EventT>()) { HandlerBox1<EventT>() }
+    val box = remember(key, typeOf<EventT>()) { HandlerBox1<EventT>() }
     box.handler = handler
     box.stableHandler
   } else {
