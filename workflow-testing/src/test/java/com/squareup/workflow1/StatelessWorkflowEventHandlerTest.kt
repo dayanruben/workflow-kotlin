@@ -32,7 +32,7 @@ class StatelessWorkflowEventHandlerTest(
 
   @Test fun eventHandler0() {
     Workflow.stateless<Unit, S, () -> Unit> {
-      eventHandler("", remember = remembering) { setOutput("yay") }
+      eventHandler("name", remember = remembering, key = "key") { setOutput("yay") }
     }.launchForTestingFromStartWith(
       testParams = WorkflowTestParams(runtimeConfig = runtimeConfig)
     ) {
@@ -50,7 +50,7 @@ class StatelessWorkflowEventHandlerTest(
 
   @Test fun eventHandler1() {
     Workflow.stateless<Unit, S, (S) -> Unit> {
-      eventHandler("", remember = remembering) { e1 ->
+      eventHandler("name", remember = remembering, key = "key") { e1 ->
         setOutput(e1)
       }
     }.launchForTestingFromStartWith(
@@ -70,7 +70,7 @@ class StatelessWorkflowEventHandlerTest(
 
   @Test fun eventHandler2() {
     Workflow.stateless<Unit, S, (S, S) -> Unit> {
-      eventHandler("", remember = remembering) { e1, e2 ->
+      eventHandler("name", remember = remembering, key = "key") { e1, e2 ->
         setOutput("$e1-$e2")
       }
     }.launchForTestingFromStartWith(
@@ -90,7 +90,7 @@ class StatelessWorkflowEventHandlerTest(
 
   @Test fun eventHandler3() {
     Workflow.stateless<Unit, S, (S, S, S) -> Unit> {
-      eventHandler("", remember = remembering) { e1, e2, e3 ->
+      eventHandler("name", remember = remembering, key = "key") { e1, e2, e3 ->
         setOutput("$e1-$e2-$e3")
       }
     }.launchForTestingFromStartWith(
@@ -110,7 +110,7 @@ class StatelessWorkflowEventHandlerTest(
 
   @Test fun eventHandler4() {
     Workflow.stateless<Unit, S, (S, S, S, S) -> Unit> {
-      eventHandler("", remember = remembering) { e1, e2, e3, e4 ->
+      eventHandler("name", remember = remembering, key = "key") { e1, e2, e3, e4 ->
         setOutput("$e1-$e2-$e3-$e4")
       }
     }.launchForTestingFromStartWith(
@@ -130,7 +130,7 @@ class StatelessWorkflowEventHandlerTest(
 
   @Test fun eventHandler5() {
     Workflow.stateless<Unit, S, (S, S, S, S, S) -> Unit> {
-      eventHandler("", remember = remembering) { e1, e2, e3, e4, e5 ->
+      eventHandler("name", remember = remembering, key = "key") { e1, e2, e3, e4, e5 ->
         setOutput("$e1-$e2-$e3-$e4-$e5")
       }
     }.launchForTestingFromStartWith(
@@ -150,7 +150,7 @@ class StatelessWorkflowEventHandlerTest(
 
   @Test fun eventHandler6() {
     Workflow.stateless<Unit, S, (S, S, S, S, S, S) -> Unit> {
-      eventHandler("", remember = remembering) { e1, e2, e3, e4, e5, e6 ->
+      eventHandler("name", remember = remembering, key = "key") { e1, e2, e3, e4, e5, e6 ->
         setOutput("$e1-$e2-$e3-$e4-$e5-$e6")
       }
     }.launchForTestingFromStartWith(
@@ -170,7 +170,7 @@ class StatelessWorkflowEventHandlerTest(
 
   @Test fun eventHandler7() {
     Workflow.stateless<Unit, S, (S, S, S, S, S, S, S) -> Unit> {
-      eventHandler("", remember = remembering) { e1, e2, e3, e4, e5, e6, e7 ->
+      eventHandler("name", remember = remembering, key = "key") { e1, e2, e3, e4, e5, e6, e7 ->
         setOutput("$e1-$e2-$e3-$e4-$e5-$e6-$e7")
       }
     }.launchForTestingFromStartWith(
@@ -190,7 +190,7 @@ class StatelessWorkflowEventHandlerTest(
 
   @Test fun eventHandler8() {
     Workflow.stateless<Unit, S, (S, S, S, S, S, S, S, S) -> Unit> {
-      eventHandler("", remember = remembering) { e1, e2, e3, e4, e5, e6, e7, e8 ->
+      eventHandler("name", remember = remembering, key = "key") { e1, e2, e3, e4, e5, e6, e7, e8 ->
         setOutput("$e1-$e2-$e3-$e4-$e5-$e6-$e7-$e8")
       }
     }.launchForTestingFromStartWith(
@@ -210,7 +210,11 @@ class StatelessWorkflowEventHandlerTest(
 
   @Test fun eventHandler9() {
     Workflow.stateless<Unit, S, (S, S, S, S, S, S, S, S, S) -> Unit> {
-      eventHandler("", remember = remembering) { e1, e2, e3, e4, e5, e6, e7, e8, e9 ->
+      eventHandler(
+        "name",
+        remember = remembering,
+        key = "key"
+      ) { e1, e2, e3, e4, e5, e6, e7, e8, e9 ->
         setOutput("$e1-$e2-$e3-$e4-$e5-$e6-$e7-$e8-$e9")
       }
     }.launchForTestingFromStartWith(
@@ -230,7 +234,11 @@ class StatelessWorkflowEventHandlerTest(
 
   @Test fun eventHandler10() {
     Workflow.stateless<Unit, S, (S, S, S, S, S, S, S, S, S, S) -> Unit> {
-      eventHandler("", remember = remembering) { e1, e2, e3, e4, e5, e6, e7, e8, e9, e10 ->
+      eventHandler(
+        "name",
+        remember = remembering,
+        key = "key"
+      ) { e1, e2, e3, e4, e5, e6, e7, e8, e9, e10 ->
         setOutput("$e1-$e2-$e3-$e4-$e5-$e6-$e7-$e8-$e9-$e10")
       }
     }.launchForTestingFromStartWith(

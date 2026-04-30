@@ -81,26 +81,31 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
     public inline fun <reified E1, reified E2> eventHandler(
       name: String,
       remember: Boolean? = null,
+      key: String = name,
       noinline update: Updater<PropsT, *, OutputT>.(E1, E2) -> Unit
-    ): (E1, E2) -> Unit = eventHandler2(name, remember ?: stableEventHandlers, update)
+    ): (E1, E2) -> Unit = eventHandler2(name, remember ?: stableEventHandlers, key, update)
 
     public inline fun <reified E1, reified E2, reified E3> eventHandler(
       name: String,
       remember: Boolean? = null,
+      key: String = name,
       noinline update: Updater<PropsT, *, OutputT>.(E1, E2, E3) -> Unit
-    ): (E1, E2, E3) -> Unit = eventHandler3(name, remember ?: stableEventHandlers, update)
+    ): (E1, E2, E3) -> Unit = eventHandler3(name, remember ?: stableEventHandlers, key, update)
 
     public inline fun <reified E1, reified E2, reified E3, reified E4> eventHandler(
       name: String,
       remember: Boolean? = null,
+      key: String = name,
       noinline update: Updater<PropsT, *, OutputT>.(E1, E2, E3, E4) -> Unit
-    ): (E1, E2, E3, E4) -> Unit = eventHandler4(name, remember ?: stableEventHandlers, update)
+    ): (E1, E2, E3, E4) -> Unit = eventHandler4(name, remember ?: stableEventHandlers, key, update)
 
     public inline fun <reified E1, reified E2, reified E3, reified E4, reified E5> eventHandler(
       name: String,
       remember: Boolean? = null,
+      key: String = name,
       noinline update: Updater<PropsT, *, OutputT>.(E1, E2, E3, E4, E5) -> Unit
-    ): (E1, E2, E3, E4, E5) -> Unit = eventHandler5(name, remember ?: stableEventHandlers, update)
+    ): (E1, E2, E3, E4, E5) -> Unit =
+      eventHandler5(name, remember ?: stableEventHandlers, key, update)
 
     public inline fun <
       reified E1,
@@ -112,6 +117,7 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
       > eventHandler(
       name: String,
       remember: Boolean? = null,
+      key: String = name,
       noinline update: Updater<PropsT, *, OutputT>.(
         E1,
         E2,
@@ -121,7 +127,7 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
         E6,
       ) -> Unit
     ): (E1, E2, E3, E4, E5, E6) -> Unit =
-      eventHandler6(name, remember ?: stableEventHandlers, update)
+      eventHandler6(name, remember ?: stableEventHandlers, key, update)
 
     public inline fun <
       reified E1,
@@ -134,6 +140,7 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
       > eventHandler(
       name: String,
       remember: Boolean? = null,
+      key: String = name,
       noinline update: Updater<PropsT, *, OutputT>.(
         E1,
         E2,
@@ -144,7 +151,7 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
         E7,
       ) -> Unit
     ): (E1, E2, E3, E4, E5, E6, E7) -> Unit =
-      eventHandler7(name, remember ?: stableEventHandlers, update)
+      eventHandler7(name, remember ?: stableEventHandlers, key, update)
 
     public inline fun <
       reified E1,
@@ -158,6 +165,7 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
       > eventHandler(
       name: String,
       remember: Boolean? = null,
+      key: String = name,
       noinline update: Updater<PropsT, *, OutputT>.(
         E1,
         E2,
@@ -169,7 +177,7 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
         E8,
       ) -> Unit
     ): (E1, E2, E3, E4, E5, E6, E7, E8) -> Unit =
-      eventHandler8(name, remember ?: stableEventHandlers, update)
+      eventHandler8(name, remember ?: stableEventHandlers, key, update)
 
     public inline fun <
       reified E1,
@@ -184,6 +192,7 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
       > eventHandler(
       name: String,
       remember: Boolean? = null,
+      key: String = name,
       noinline update: Updater<PropsT, *, OutputT>.(
         E1,
         E2,
@@ -196,7 +205,7 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
         E9,
       ) -> Unit
     ): (E1, E2, E3, E4, E5, E6, E7, E8, E9) -> Unit =
-      eventHandler9(name, remember ?: stableEventHandlers, update)
+      eventHandler9(name, remember ?: stableEventHandlers, key, update)
 
     public inline fun <
       reified E1,
@@ -212,6 +221,7 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
       > eventHandler(
       name: String,
       remember: Boolean? = null,
+      key: String = name,
       noinline update: Updater<PropsT, *, OutputT>.(
         E1,
         E2,
@@ -225,7 +235,7 @@ public abstract class StatelessWorkflow<PropsT, OutputT, out RenderingT> :
         E10,
       ) -> Unit
     ): (E1, E2, E3, E4, E5, E6, E7, E8, E9, E10) -> Unit =
-      eventHandler10(name, remember ?: stableEventHandlers, update)
+      eventHandler10(name, remember ?: stableEventHandlers, key, update)
   }
 
   /**
