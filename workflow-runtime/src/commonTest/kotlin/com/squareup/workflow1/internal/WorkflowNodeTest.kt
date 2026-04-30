@@ -1155,7 +1155,7 @@ internal class WorkflowNodeTest {
       node.render(workflow.asStatefulWorkflow(), Unit)
     }
     val expectedPrefix = "Expected sink to not be sent to until after the render pass. " +
-      "Received action: eH: eventHandler"
+      "Received action: eventHandler"
     assertTrue(
       error.message!!.startsWith(expectedPrefix),
       "Expected prefix: \"$expectedPrefix\", actually: \"${error.message}\""
@@ -1703,8 +1703,8 @@ internal class WorkflowNodeTest {
 
     assertEquals(2, capturedDroppedActions!!.size)
     // Event handler actions have a specific format
-    assertTrue(capturedDroppedActions[0].debuggingName.startsWith("eH: handler"))
-    assertTrue(capturedDroppedActions[1].debuggingName.startsWith("eH: handler"))
+    assertTrue(capturedDroppedActions[0].debuggingName.startsWith("handler"))
+    assertTrue(capturedDroppedActions[1].debuggingName.startsWith("handler"))
   }
 
   private class TestSession(override val sessionId: Long = 0) : WorkflowSession {
