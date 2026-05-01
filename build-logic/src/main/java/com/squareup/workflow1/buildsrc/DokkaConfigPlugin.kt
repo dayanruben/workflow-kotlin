@@ -29,7 +29,9 @@ class DokkaConfigPlugin : Plugin<Project> {
             val modulePath = target.projectDir.relativeTo(target.rootDir).path
 
             // URL showing where the source code can be accessed through the web browser
-            it.remoteUrl("https://github.com/square/workflow-kotlin/blob/main/$modulePath/src/$sourceSetName")
+            it.remoteUrl(
+              "https://github.com/square/workflow-kotlin/blob/main/$modulePath/src/$sourceSetName"
+            )
             // Suffix which is used to append the line number to the URL. Use #L for GitHub
             it.remoteLineSuffix.set("#L")
           }

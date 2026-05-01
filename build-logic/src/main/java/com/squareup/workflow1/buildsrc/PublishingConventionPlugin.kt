@@ -52,7 +52,10 @@ class PublishingConventionPlugin : Plugin<Project> {
     }
 
     target.extensions.configure(MavenPublishBaseExtension::class.java) { basePluginExtension ->
-      basePluginExtension.publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
+      basePluginExtension.publishToMavenCentral(
+        SonatypeHost.CENTRAL_PORTAL,
+        automaticRelease = true
+      )
       // Will only apply to non snapshot builds.
       basePluginExtension.signAllPublications()
       // import all settings from root project and project-specific gradle.properties files
@@ -87,7 +90,9 @@ class PublishingConventionPlugin : Plugin<Project> {
       }
       target.pluginManager.withPlugin("org.jetbrains.kotlin.multiplatform") {
         basePluginExtension.configure(
-          KotlinMultiplatform(javadocJar = JavadocJar.Dokka(taskName = "dokkaGeneratePublicationHtml"))
+          KotlinMultiplatform(
+            javadocJar = JavadocJar.Dokka(taskName = "dokkaGeneratePublicationHtml")
+          )
         )
         // don't set the artifactId for KMP, because this is handled by the KMP plugin itself
         target.setPublicationProperties(pomDescription, artifactIdOrNull = null)

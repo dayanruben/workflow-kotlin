@@ -1,6 +1,5 @@
 package com.squareup.workflow1.buildsrc
 
-import com.rickbusarow.kgx.dependency
 import com.rickbusarow.kgx.library
 import com.rickbusarow.kgx.libsCatalog
 import com.squareup.workflow1.buildsrc.internal.androidTestImplementation

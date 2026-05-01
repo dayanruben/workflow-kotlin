@@ -160,7 +160,9 @@ private data class Shard(
   val testCount by testCountLazy
   val projects by projectsLazy
   override fun toString(): String {
-    return "Shard(number=$number, testCount=$testCount, projects=${projects.joinToString("\n") { it.path }})"
+    return "Shard(number=$number, testCount=$testCount, projects=${projects.joinToString(
+      "\n"
+    ) { it.path }})"
   }
 }
 
@@ -230,11 +232,11 @@ private fun Project.androidTestCost(): Int =
     if (!androidTestSrc.exists()) return@sumOf 0
 
     androidTestSrc
-    .walkTopDown()
-    .filter { it.isFile && it.extension == "kt" }
-    .sumOf { file ->
-      val fileText = file.readText()
+      .walkTopDown()
+      .filter { it.isFile && it.extension == "kt" }
+      .sumOf { file ->
+        val fileText = file.readText()
 
-      testAnnotationRegex.findAll(fileText).count()
-    }
-}
+        testAnnotationRegex.findAll(fileText).count()
+      }
+  }
