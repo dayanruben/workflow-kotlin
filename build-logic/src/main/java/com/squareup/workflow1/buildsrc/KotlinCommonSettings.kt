@@ -40,8 +40,10 @@ fun Project.kotlinCommonSettings(bomConfigurationName: String) {
 
   tasks.withType(KotlinCompile::class.java).configureEach { kotlinCompile ->
     kotlinCompile.apply {
-      if (!(path.startsWith(":samples") || path.startsWith(":benchmarks") ||
-          name.contains("test", ignoreCase = true))
+      if (!(
+          path.startsWith(":samples") || path.startsWith(":benchmarks") ||
+            name.contains("test", ignoreCase = true)
+          )
       ) {
         explicitApiMode.set(Strict)
       }

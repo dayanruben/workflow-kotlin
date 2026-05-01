@@ -11,7 +11,9 @@ class KotlinAndroidConventionPlugin : Plugin<Project> {
 
     target.kotlinCommonSettings(bomConfigurationName = "implementation")
 
-    target.extensions.configure<AndroidComponentsExtension<*, *, *>>("androidComponents") { components ->
+    target.extensions.configure<AndroidComponentsExtension<*, *, *>>(
+      "androidComponents"
+    ) { components ->
       val isMicrobenchmarkProject = target.plugins.hasPlugin("androidx.benchmark")
       val buildType = if (isMicrobenchmarkProject) {
         // Microbenchmarks are special, they only run as release.

@@ -2,7 +2,6 @@ package com.squareup.workflow1.buildsrc
 
 import com.android.build.gradle.TestedExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import com.rickbusarow.kgx.dependency
 import com.rickbusarow.kgx.library
 import com.rickbusarow.kgx.libsCatalog
 import com.squareup.workflow1.buildsrc.internal.implementation
